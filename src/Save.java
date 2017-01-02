@@ -2,11 +2,11 @@ import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 
 public class Save {
-	Bus obj;
+	Bus[][] obj;
 	String filename;
 	String[] h = new String[]{"sds","sdsds"};
 	public Save(Object obj,String filename){
-		this.obj = (Bus)obj;
+		this.obj = (Bus) obj;
 		System.out.println(obj.getClass());
 		this.filename = filename;
 		//System.out.println(obj[96][0]);

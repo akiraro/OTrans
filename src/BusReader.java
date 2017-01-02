@@ -14,15 +14,17 @@ public class BusReader {
 
 	public void openFile() {
 		try {
-			x = new Scanner(new File("C://Users//HAFIZI//Desktop//DATA//routes.txt"));
+			x = new Scanner(new File("routes.txt"));
 		} catch (Exception e) {
 			System.out.println("File is not found");
+			e.printStackTrace();
 		}
 
 		try {
-			y = new Scanner(new File("C://Users//HAFIZI//Desktop//DATA//trips.txt"));
+			y = new Scanner(new File("trips.txt"));
 		} catch (Exception e) {
 			System.out.println("File is not found");
+			e.printStackTrace();
 		}
 	}
 
