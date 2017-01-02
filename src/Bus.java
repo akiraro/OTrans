@@ -3,10 +3,10 @@ public class Bus {
 	int no,direction,tripId;
 	String description;
 	public Bus(int no, int tripId, int direction, String description){
-		no = this.no;
-		direction = this.direction;
-		tripId = this.tripId;
-		description = this.description;
+		this.no = no;
+		this.direction = direction;
+		this.tripId = tripId;
+		this.description = description;
 		
 	}
 	

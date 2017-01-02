@@ -6,10 +6,7 @@ public class BusReader {
 	Bus[][] bus;
 	public BusReader(Bus[][] bus) {
 		this.bus = bus;
-		this.openFile();
-		this.readFile(bus);
-		this.print();
-		this.closeFile();
+
 	}
 
 	public Scanner x, y;
@@ -29,7 +26,7 @@ public class BusReader {
 		}
 	}
 
-	public void readFile(Bus[][] bus) {
+	public Bus[][] readFile(Bus[][] bus) {
 		// get direction and description//
 		/*
 		 * 0-bus number 1-direction 2-trip id 3-description
@@ -52,14 +49,14 @@ public class BusReader {
 		// create bus class //
 		for (int i = 0 ; i<760 ; i++){
 			int count = 0;
-			System.out.println(data[i][count][0]);
+			//System.out.println(data[i][count][0]);
 			while(data[i][count][0] != null){
 				Bus tempBus = new Bus(i,Integer.parseInt(data[i][count][2]),Integer.parseInt(data[i][count][1]),data[i][count][3]);
 				bus[i][count] = tempBus;
 				count++;
 			}
 		}
-		
+		return bus;
 	}
 
 	// Debug method//
@@ -69,12 +66,17 @@ public class BusReader {
 			System.out.println("");
 			}
 			*/
-		System.out.println(bus[95][0]);
-
 	}
 
 	public void closeFile() {
 		x.close();
+	}
+	
+	public Bus[][] init(){
+		this.openFile();
+		Bus[][] temp12 = this.readFile(bus);		
+		this.closeFile();
+		return temp12;
 	}
 
 }
