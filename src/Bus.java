@@ -1,5 +1,8 @@
+import java.io.Serializable;
 
-public class Bus {
+public class Bus implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	int no,direction,tripId;
 	String description;
 	public Bus(int no, int tripId, int direction, String description){

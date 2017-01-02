@@ -9,16 +9,10 @@ public class BusReader {
 
 	}
 
-	public Scanner x, y;
+	public Scanner y;
 	String[][][] data = new String[760][2000][4];
 
 	public void openFile() {
-		try {
-			x = new Scanner(new File("C://Users//HAFIZI//Desktop//DATA//routes.txt"));
-		} catch (Exception e) {
-			System.out.println("File is not found");
-		}
-
 		try {
 			y = new Scanner(new File("C://Users//HAFIZI//Desktop//DATA//trips.txt"));
 		} catch (Exception e) {
@@ -69,7 +63,7 @@ public class BusReader {
 	}
 
 	public void closeFile() {
-		x.close();
+		y.close();
 	}
 	
 	public Bus[][] init(){
