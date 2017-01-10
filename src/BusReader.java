@@ -3,14 +3,15 @@ import java.util.*;
 
 //constructor//
 public class BusReader {
-	Bus[][] bus;
-	public BusReader(Bus[][] bus) {
-		this.bus = bus;
+	Bus[] bus = new Bus[760];
+	HashMap<String, BusStop> busStop;
+
+	public BusReader(HashMap<String, BusStop> busStop) {
+		this.busStop = busStop;
 
 	}
 
-	public Scanner y;
-	String[][][] data = new String[760][2000][4];
+	public Scanner y, x;
 
 	public void openFile() {
 		try {
@@ -18,59 +19,72 @@ public class BusReader {
 		} catch (Exception e) {
 			System.out.println("File is not found");
 		}
+
 	}
 
-	public Bus[][] readFile(Bus[][] bus) {
+	public Bus[] readFile() {
 		// get direction and description//
 		/*
 		 * 0-bus number 1-direction 2-trip id 3-description
 		 */
-		y.nextLine();
+		y.nextLine(); // skip first line of trips
+
+		String[] temp = null;
+		String[] temp2 = null;
+		Bus tempBus = null;
 		while (y.hasNextLine()) {
-			y.useDelimiter(",");
-			String[] temp = y.nextLine().split(",");
+			temp = y.nextLine().split(",");
+
+			// create bus class //
 			int number = Integer.parseInt(temp[0].split("-")[0]);
-			int number2 = 0 ;
-			while (data[number][number2][0] != null){
-				number2++;
+			if (bus[number] == null) {
+				tempBus = new Bus(number, Integer.parseInt(temp[4]), temp[3], null);
+			} else {
+				tempBus = bus[number];
 			}
-			data[number][number2][0] = temp[0];
-			data[number][number2][1] = temp[4];
-			data[number][number2][2] = temp[2].split("-")[0];
-			data[number][number2][3] = temp[3];
-		}
-		
-		// create bus class //
-		for (int i = 0 ; i<760 ; i++){
-			int count = 0;
-			//System.out.println(data[i][count][0]);
-			while(data[i][count][0] != null){
-				Bus tempBus = new Bus(i,Integer.parseInt(data[i][count][2]),Integer.parseInt(data[i][count][1]),data[i][count][3]);
-				bus[i][count] = tempBus;
-				count++;
+
+			try {
+				x = new Scanner(new File("C://Users//HAFIZI//Desktop//DATA//stop_times.txt"));
+				x.nextLine();
+			} catch (Exception e) {
+				System.out.println("File is not found");
 			}
+			while (x.hasNextLine()) {
+				temp2 = x.nextLine().split(",");
+
+				if (temp[2].equals(temp2[0])) {
+					BusStop temp3 = busStop.remove(temp2[3]);
+					temp3.schedule.addTime(temp[0].split("-")[0], temp2[2]);
+					busStop.put(temp3.getStopID(), temp3);
+
+					// add stop to bus class//
+					if (tempBus.busStop[Integer.parseInt(temp2[4])] == null) {
+						System.out.println("adding bus stop : " + temp2[3] + " to bus : " + number);
+						tempBus.busStop[Integer.parseInt(temp2[4])] = temp2[3];
+					}
+				}
+
+			}
+
+			bus[number] = tempBus;
+
 		}
 		return bus;
-	}
-
-	// Debug method//
-	public void print() {
-		/*for (int i = 0; i < 751; i++) {
-			System.out.printf("%s %s %s %s", data[i][0][0], data[i][0][1], data[i][0][2], data[i][0][3]);
-			System.out.println("");
-			}
-			*/
 	}
 
 	public void closeFile() {
 		y.close();
 	}
-	
-	public Bus[][] init(){
+
+	public Bus[] init() {
 		this.openFile();
-		Bus[][] temp12 = this.readFile(bus);		
+		Bus[] temp12 = this.readFile();
 		this.closeFile();
 		return temp12;
+	}
+
+	public HashMap<String, BusStop> getData() {
+		return busStop;
 	}
 
 }

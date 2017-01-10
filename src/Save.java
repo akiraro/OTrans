@@ -14,9 +14,9 @@ public class Save {
 			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(filename+".ser"));
 			out.writeObject(data);
 			out.close();
-			System.out.println("Saved");
+			System.out.println("\nSaved");
 		} catch (Exception e) {
-			System.out.println("Fail to save data");
+			System.out.println("Fail to save data : " + e );
 		}
 	}
 }

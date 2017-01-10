@@ -1,21 +1,28 @@
+import java.util.HashMap;
 
 public class Data {
 
 	public static void main(String[] args) {
-		//create bus//
-		Bus[][] bus = new Bus[760][2000];
-		BusReader busReader = new BusReader(bus);
-		bus = busReader.init();
-		new Save(bus, "Bus");
 		Reader reader = new Reader();
-		//Bus[][] test = (Bus[][])reader.run("Bus.ser");
-
 		//create bus stop//
-		BusStop[] busStop = new BusStop[10000];
 		BusStopReader busStopReader = new BusStopReader();
-		busStop = busStopReader.init();
+		HashMap<String,BusStop> busStop = busStopReader.init();
+
+		
+		
+		//create bus//
+		Bus[] bus = new Bus[760];
+		BusReader busReader = new BusReader(busStop);
+		bus = busReader.init();
+		busStop = busReader.getData();
+		new Save(bus, "Bus");
+		Bus[] test2 = (Bus[])reader.run("Bus.ser");
 		new Save(busStop, "BusStop");
-		//BusStop[] test = (BusStop[])reader.run("BusStop.ser");
+		HashMap<String,BusStop> test = (HashMap<String,BusStop>)reader.run("BusStop.ser");
+		//BusStop temp = test.get("EB960");
+		//temp.schedule.getTime("7");
+		
+
 		
 	}
 

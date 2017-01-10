@@ -5,7 +5,6 @@ import java.util.*;
 public class BusStopReader {
 	BusStop[] busStop = new BusStop[10000];
 	public Scanner y;
-	String[][] data = new String[10000][3];
 
 	public void openFile() {
 
@@ -16,28 +15,26 @@ public class BusStopReader {
 		}
 	}
 
-	public BusStop[] readFile() {
-		int counter = 0;
+	public HashMap<String,BusStop> readFile() {
 		// get direction and description//
 		/*
 		 * 0-stopID 1-stopNo 2-stopdescription
 		 */
+		HashMap<String,BusStop> data = new HashMap<String, BusStop>();
+		
 		y.nextLine();
 		while (y.hasNextLine()) {
 			y.useDelimiter(",");
 			String[] temp = y.nextLine().split(",");
-			data[counter][0] = temp[0];
-			data[counter][1] = temp[1];
-			data[counter][2] = temp[2];
-			counter++;
+			try{
+			BusStop temp2 = new BusStop(temp[0], temp[1], temp[2],null);
+			data.put(temp[0], temp2);
+			}
+			catch(Exception e){
+				System.out.println("Error occured : " + e);
+			}	
 		}
-
-		// create busStop class //
-		for (int i = 0; i < 10000; i++) {
-			BusStop temp = new BusStop(data[0][0], Integer.parseInt(data[0][1]), data[i][2]);
-			busStop[i] = temp;
-		}
-		return busStop;
+		return data;
 
 	}
 
@@ -54,9 +51,9 @@ public class BusStopReader {
 		y.close();
 	}
 
-	public BusStop[] init() {
+	public HashMap<String, BusStop> init() {
 		this.openFile();
-		BusStop[] temp = this.readFile();
+		HashMap<String,BusStop> temp = this.readFile();
 		this.closeFile();
 		return temp;
 	}
