@@ -5,22 +5,22 @@ public class Data {
 	public static void main(String[] args) {
 		Reader reader = new Reader();
 		//create bus stop//
-		BusStopReader busStopReader = new BusStopReader();
-		HashMap<String,BusStop> busStop = busStopReader.init();
+		//BusStopReader busStopReader = new BusStopReader();
+		//HashMap<String,BusStop> busStop = busStopReader.init();
 
 		
 		
 		//create bus//
 		Bus[] bus = new Bus[760];
-		BusReader busReader = new BusReader(busStop);
-		bus = busReader.init();
-		busStop = busReader.getData();
-		new Save(bus, "Bus");
-		Bus[] test2 = (Bus[])reader.run("Bus.ser");
-		new Save(busStop, "BusStop");
+		//BusReader busReader = new BusReader(busStop);
+		//bus = busReader.init();
+		//busStop = busReader.getData();
+		//new Save(bus, "Bus");
+		//Bus[] test2 = (Bus[])reader.run("Bus.ser");
+		//new Save(busStop, "BusStop");
 		HashMap<String,BusStop> test = (HashMap<String,BusStop>)reader.run("BusStop.ser");
-		//BusStop temp = test.get("EB960");
-		//temp.schedule.getTime("7");
+		BusStop temp = test.get("AE080");
+		temp.schedule.getTime("92");
 		
 
 		
