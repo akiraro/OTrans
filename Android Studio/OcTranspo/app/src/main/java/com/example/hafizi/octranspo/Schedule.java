@@ -4,8 +4,8 @@ package com.example.hafizi.octranspo;
  * Created by HAFIZI on 2017-01-11.
  */
 
-import java.util.HashMap;
 import java.io.Serializable;
+import java.util.HashMap;
 
 public class Schedule implements Serializable{
     private static final long serialVersionUID = 1L;

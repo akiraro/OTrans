@@ -38,15 +38,6 @@ public class BusStopReader {
 
 	}
 
-	// Debug method//
-	public void print() {
-		/*
-		 * for (int i = 0; i < 751; i++) { System.out.printf("%s %s %s %s",
-		 * data[i][0][0], data[i][0][1], data[i][0][2], data[i][0][3]);
-		 * System.out.println(""); }
-		 */
-	}
-
 	public void closeFile() {
 		y.close();
 	}

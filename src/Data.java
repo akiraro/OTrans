@@ -16,7 +16,7 @@ public class Data {
 		//bus = busReader.init();
 		//busStop = busReader.getData();
 		//new Save(bus, "Bus");
-		//Bus[] test2 = (Bus[])reader.run("Bus.ser");
+		Bus[] test2 = (Bus[])reader.run("Bus.ser");
 		//new Save(busStop, "BusStop");
 		HashMap<String,BusStop> test = (HashMap<String,BusStop>)reader.run("BusStop.ser");
 		BusStop temp = test.get("AE080");

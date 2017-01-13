@@ -7,7 +7,7 @@ package com.example.hafizi.octranspo;
 import java.io.Serializable;
 
 public class BusStop implements Serializable {
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 21L;
     String description, stopID, stopNo;
     Schedule schedule;
 
