@@ -9,7 +9,7 @@ import java.util.HashMap;
 public class Sort {
 
     public static void main (String[]args){
-        Reader reader = new Reader();
+        //Reader reader = new Reader();
         //create bus stop//
         BusStopReader busStopReader = new BusStopReader();
         HashMap<String,BusStop> busStop = busStopReader.init();

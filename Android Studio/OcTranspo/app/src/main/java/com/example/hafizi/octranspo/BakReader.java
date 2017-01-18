@@ -23,6 +23,7 @@ public class BakReader implements Serializable{
         try {
             InputStream fis = originActivity.getResources().getAssets().open(filename);
             ObjectInputStream ois = new ObjectInputStream(fis);
+            ois.resolveClass().getClass()
             data = ois.readObject();
             ois.close();
             System.out.println("Read completed");
