@@ -6,11 +6,12 @@ package com.example.hafizi.octranspo;
 
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
+import java.util.HashMap;
 
 public class Save {
     Object data;
     String filename;
-    public Save(Object obj,String filename){
+    public Save(Object obj, String filename){
         this.filename = filename;
         data = obj;
         run();
