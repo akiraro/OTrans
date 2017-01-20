@@ -9,7 +9,7 @@ import java.util.Scanner;
  */
 
 public class InputOutput {
-    Scanner a, b, c, d, e, f;
+    Scanner a, b, c, d;
     String[] stringArray, stringArray2;
 
     public HashMap<String, BusStop> run1() {
@@ -82,6 +82,40 @@ public class InputOutput {
         }
         return bus;
     }
+
+    public Bus[] run3() {
+        Bus[] bus = new Bus[760];
+
+        try {
+            a = new Scanner(new File("C://Users//HAFIZI//Desktop//DATA//trips.txt"));
+        } catch (Exception e) {
+            System.out.println("File is not found");
+        }
+
+
+        // get direction and description//
+		/*
+		 * 0-bus number 1-direction 2-trip id 3-description
+		 */
+        a.nextLine(); // skip first line of trips
+
+        String[] temp = null;
+        Bus tempBus = null;
+        while (a.hasNextLine()) {
+            temp = a.nextLine().split(",");
+
+            // create bus class //
+            int number = Integer.parseInt(temp[0].split("-")[0]);
+            if (bus[number] == null) {
+                tempBus = new Bus(number, Integer.parseInt(temp[4]), temp[3], null);
+            } else {
+                tempBus = bus[number];
+            }
+
+        }
+        return bus;
+    }
+
 
     /*
     public HashMap<String,BusStop> run3(HashMap<String,BusStop> busStop){
