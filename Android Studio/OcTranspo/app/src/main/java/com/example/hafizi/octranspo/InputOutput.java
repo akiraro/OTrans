@@ -15,7 +15,6 @@ public class InputOutput {
     public HashMap<String, BusStop> run1() {
         try {
             a = new Scanner(new File("C://Users//HAFIZI//Desktop//DATA//stops.txt"));
-            System.out.println("Successfully initiate file BusStop");
         } catch (Exception e) {
             System.out.println("File is not found");
         }
@@ -83,57 +82,69 @@ public class InputOutput {
         return bus;
     }
 
-    public Bus[] run3() {
+    public Bus[] run3(HashMap<String, String[]> busList) {
         Bus[] bus = new Bus[760];
-
         try {
             a = new Scanner(new File("C://Users//HAFIZI//Desktop//DATA//trips.txt"));
         } catch (Exception e) {
             System.out.println("File is not found");
         }
-
-
         // get direction and description//
-		/*
-		 * 0-bus number 1-direction 2-trip id 3-description
+        /*
+         * 0-bus number 1-direction 2-trip id 3-description
 		 */
         a.nextLine(); // skip first line of trips
 
-        String[] temp = null;
         Bus tempBus = null;
         while (a.hasNextLine()) {
-            temp = a.nextLine().split(",");
-
+            stringArray = a.nextLine().split(",");
             // create bus class //
-            int number = Integer.parseInt(temp[0].split("-")[0]);
+            int number = Integer.parseInt(stringArray[0].split("-")[0]);
             if (bus[number] == null) {
-                tempBus = new Bus(number, Integer.parseInt(temp[4]), temp[3], null);
+                tempBus = new Bus(number, Integer.parseInt(stringArray[4]), stringArray[3], busList.get(Integer.toString(number)));
+                bus[number] = tempBus;
             } else {
                 tempBus = bus[number];
             }
-
         }
         return bus;
     }
 
 
-    /*
-    public HashMap<String,BusStop> run3(HashMap<String,BusStop> busStop){
-        HashMap<String,BusStop> data = busStop;
+    public HashMap<String, BusStop> run4(HashMap<String, BusStop> busStop) {
+        HashMap<String, BusStop> data = busStop;
 
         try {
-            d = new Scanner(new File("C://Users//HAFIZI//Desktop//DATA//stop_times.txt"));
-            d.nextLine();
+            a = new Scanner(new File("C://Users//HAFIZI//Desktop//DATA//stop_times.txt"));
+            a.nextLine();
         } catch (Exception e) {
             System.out.println("File is not found");
         }
-        while(c.hasNext()) {
-            stringArray = d.nextLine().split(",");
-            System.out.println(stringArray[4]);
-            BusStop temp = data.get(stringArray[3]);
-            temp.schedule.addTime(stringArray[2]);
-            data.put(temp);
+
+
+        while (a.hasNext()) {
+            stringArray = a.nextLine().split(",");
+
+            try {
+                b = new Scanner(new File("C://Users//HAFIZI//Desktop//DATA//trips.txt"));
+                b.nextLine();
+            } catch (Exception e) {
+                System.out.println("File is not found");
+            }
+
+            while (b.hasNext()) {
+                stringArray2 = b.nextLine().split(",");
+                if (stringArray[0].equals(stringArray2[2])) {
+                    int number = Integer.parseInt(stringArray2[0].split("-")[0]);
+                    BusStop temp = data.get(stringArray[3]);
+                    temp.schedule.addTime(Integer.toString(number),stringArray[2]);
+                    data.put(temp.getStopID(), temp);
+                    System.out.println("Adding time : " + stringArray[2] + " to BusStop : " + temp.getStopID());
+                }
+            }
         }
+        return data;
     }
-    */
+
+
 }

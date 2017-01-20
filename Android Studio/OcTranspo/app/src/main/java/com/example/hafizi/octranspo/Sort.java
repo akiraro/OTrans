@@ -32,17 +32,19 @@ public class Sort {
 
         InputOutput IO = new InputOutput();
 
-        //HashMap<String,BusStop> busStop = IO.run1();
+        HashMap<String,BusStop> temp = IO.run1();
+
         //HashMap<String,String[]> busList = IO.run2();
         //new Save(busList, "BusList");
 
 
         //BakReader reader = new BakReader();
         //HashMap<String,String[]> busList = (HashMap<String,String[]>)reader.run("BusList.ser");
+        //Bus[] Bus = IO.run3(busList);
+        //new Save(Bus,"Bus");
 
-
-        //busStop = IO.run3(busStop);
-        //new Save(busStop, "BusStop");
+        HashMap<String,BusStop> busStop = IO.run4(temp);
+        new Save(busStop, "BusStop");
 
     }
 }

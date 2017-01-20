@@ -16,7 +16,7 @@ public class Bus implements Serializable {
         this.no = no;
         this.direction = direction;
         this.description = description;
-        this.busStop = new String[200];
+        this.busStop = busStop;
 
     }
 

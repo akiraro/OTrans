@@ -25,7 +25,7 @@ public class BakReader implements Serializable{
             ObjectInputStream ois = new ObjectInputStream(fis);
             data = ois.readObject();
             ois.close();
-            System.out.println("Read completed");
+            System.out.println("Read completed : " + filename);
 
         } catch (Exception e) {
             System.out.println("Error to read the file");

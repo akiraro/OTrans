@@ -1,0 +1,13 @@
+// Make list of Bus Stop //
+
+Load stops.txt
+create hashmap of busStop
+
+
+// Make list of bus stop for each number of bus //
+
+Load trips.txt
+check if not null , add sequence of bus stop
+
+
+// Make Bus Class //
