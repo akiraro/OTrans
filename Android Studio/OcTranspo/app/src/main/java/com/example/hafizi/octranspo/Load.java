@@ -9,12 +9,11 @@ import java.util.HashMap;
  */
 
 public class Load {
-
+    Bus[] bus;
+    HashMap<String,BusStop> busStop;
     public void run(Activity activity) {
         Reader reader = new Reader(activity);
-        Bus[] test2 = (Bus[]) reader.run("Bus.ser");
-        HashMap<String,BusStop> test = (HashMap<String,BusStop>)reader.run("BusStop.ser");
-        BusStop temp = test.get("AL060");
-        temp.schedule.getTime("114");
+        bus = (Bus[]) reader.run("Bus.ser");
+        busStop = (HashMap<String,BusStop>)reader.run("BusStop.ser");
     }
 }
