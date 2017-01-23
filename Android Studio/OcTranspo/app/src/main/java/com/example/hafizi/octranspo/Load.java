@@ -11,9 +11,11 @@ import java.util.HashMap;
 public class Load {
     Bus[] bus;
     HashMap<String,BusStop> busStop;
+    HashMap<String,String[]> busList;
     public void run(Activity activity) {
         Reader reader = new Reader(activity);
         bus = (Bus[]) reader.run("Bus.ser");
         busStop = (HashMap<String,BusStop>)reader.run("BusStop.ser");
+        busList = (HashMap<String,String[]>)reader.run("BusList.ser");
     }
 }

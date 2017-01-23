@@ -23,6 +23,10 @@ public class BusStop implements Serializable {
         return stopID;
     }
 
+    public String getStopNo() { return stopNo; }
+
+    public String getDescription() { return description; }
+
     public String toString() {
         return ("stopID : " + stopID + "\nStopNo : " + stopNo + "\nDescription : " + description);
     }

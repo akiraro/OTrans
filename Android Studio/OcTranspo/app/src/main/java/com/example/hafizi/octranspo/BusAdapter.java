@@ -16,9 +16,9 @@ import java.util.ArrayList;
 
 public class BusAdapter extends ArrayAdapter<Bus> {
     private final Context context;
-    private final Bus[] values;
+    private final ArrayList<Bus>  values;
 
-    public BusAdapter(Context context, Bus[] values) {
+    public BusAdapter(Context context, ArrayList<Bus> values) {
         super(context, R.layout.buslayout, values);
         this.context = context;
         this.values = values;
@@ -32,13 +32,12 @@ public class BusAdapter extends ArrayAdapter<Bus> {
             convertView = inflater.inflate(R.layout.buslayout,parent,false);
         }
 
-        if (values[position] != null) {
+        if (values.get(position) != null) {
             TextView busNo = (TextView) convertView.findViewById(R.id.text1);
             TextView description = (TextView) convertView.findViewById(R.id.text2);
-            busNo.setText(values[position].getNo());
-
+            busNo.setText(Integer.toString(values.get(position).getNo()));
+            description.setText(values.get(position).getDescription());
         }
-
 
         return convertView;
 

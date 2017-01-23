@@ -30,12 +30,16 @@ public class Schedule implements Serializable{
         }
     }
 
-    public void getTime(String no){
+    public void printTime(String no){
         String[] temp = data.get(no);
         int i = 0 ;
         while(temp[i] != null){
             System.out.println(temp[i]);
             i++;
         }
+    }
+
+    public String[] getTime(String no){
+        return data.get(no);
     }
 }
