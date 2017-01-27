@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 
 /**
@@ -22,6 +23,7 @@ public class ScheduleAdapter extends ArrayAdapter<Date> {
         super(context, R.layout.schedulelayout, values);
         this.context = context;
         this.values = values;
+        Collections.sort(values);
     }
 
     @Override
