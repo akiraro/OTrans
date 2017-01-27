@@ -14,16 +14,19 @@ import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
     BusAdapter adapter;
+    Reader reader = new Reader(this);
+    public static HashMap<String,BusStop> busStop;
+    public static HashMap<String,String[]> busList;
+    public static Bus[] bus;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Load load = new Load();
-        load.run(this);
-        Bus[] bus = load.bus;
-
-        HashMap<String,BusStop> busStop = load.busStop;
+        busStop = (HashMap<String,BusStop>)reader.run("BusStop.ser");
+        busList = (HashMap<String,String[]>)reader.run("BusList.ser");
+        bus = (Bus[]) reader.run("Bus.ser");
 
         ArrayList<Bus> list = new ArrayList<Bus>();
         for(Bus a : bus){

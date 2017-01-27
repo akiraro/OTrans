@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 public class ScheduleList extends AppCompatActivity {
@@ -16,15 +18,10 @@ public class ScheduleList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_schedule);
 
-        Load load = new Load();
-        load.run(this);
-        HashMap<String,BusStop> busStop = load.busStop;
-
+        HashMap<String,BusStop> busStop = MainActivity.busStop;
         String position = getIntent().getExtras().getString("busNo");
         String stopID = getIntent().getExtras().getString("stopID");
-        String[] data = busStop.get(stopID).schedule.getTime(position);
-        System.out.println("busNo : " + position + " stopID : " + stopID );
-        System.out.println(data[1]);
+        ArrayList<Date> data = busStop.get(stopID).schedule.getTime(position);
 
         final ListView listView = (ListView) findViewById(R.id.listView3);
         adapter = new ScheduleAdapter(this,data);

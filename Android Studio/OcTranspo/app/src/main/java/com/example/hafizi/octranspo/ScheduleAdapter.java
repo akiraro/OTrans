@@ -8,16 +8,17 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by HAFIZI on 2017-01-22.
  */
 
-public class ScheduleAdapter extends ArrayAdapter<String> {
+public class ScheduleAdapter extends ArrayAdapter<Date> {
     private final Context context;
-    private final String[] values;
+    private final ArrayList<Date> values;
 
-    public ScheduleAdapter(Context context, String[] values) {
+    public ScheduleAdapter(Context context, ArrayList<Date> values) {
         super(context, R.layout.schedulelayout, values);
         this.context = context;
         this.values = values;
@@ -31,9 +32,9 @@ public class ScheduleAdapter extends ArrayAdapter<String> {
             convertView = inflater.inflate(R.layout.schedulelayout,parent,false);
         }
 
-        if (values[position] != null) {
+        if (values.get(position) != null) {
             TextView time = (TextView) convertView.findViewById(R.id.text3);
-            time.setText(values[position]);
+            time.setText(values.get(position).toString());
         }
 
         return convertView;

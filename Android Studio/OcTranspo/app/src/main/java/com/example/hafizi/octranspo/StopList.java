@@ -18,13 +18,9 @@ public class StopList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stop_list);
 
-        Load load = new Load();
-        load.run(this);
-
-        HashMap<String,String[]> busList = load.busList;
+        HashMap<String,String[]> busList = MainActivity.busList;
         busNo = Integer.parseInt(getIntent().getExtras().getString("busNo"));
-
-        HashMap<String,BusStop> busStop = load.busStop;
+        HashMap<String,BusStop> busStop = MainActivity.busStop;
         String[] data = busList.get(Integer.toString(busNo));
 
         final ListView listView = (ListView) findViewById(R.id.listView2);

@@ -17,7 +17,7 @@ public class InputOutput {
     // create hashmap of BusStop class
     public HashMap<String, BusStop> run1() {
         try {
-            a = new Scanner(new File("C://Users//HAFIZI//Desktop//DATA//stops.txt"));
+            a = new Scanner(new File("//Users//HAFIZI//Desktop//DATA//stops.txt"));
         } catch (Exception e) {
             System.out.println("File is not found");
         }
@@ -124,14 +124,14 @@ public class InputOutput {
         int counter = 0;
 
         try {
-            a = new Scanner(new File("C://Users//HAFIZI//Desktop//DATA//trips.txt"));
+            a = new Scanner(new File("//Users//HAFIZI//Desktop//DATA//trips.txt"));
             a.nextLine();
         } catch (Exception e) {
             System.out.println("File is not found");
         }
 
         try {
-            b = new Scanner(new File("C://Users//HAFIZI//Desktop//DATA//stop_times.txt"));
+            b = new Scanner(new File("//Users//HAFIZI//Desktop//DATA//stop_times.txt"));
             b.nextLine();
         } catch (Exception e) {
             System.out.println("File is not found");

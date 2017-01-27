@@ -5,15 +5,39 @@ package com.example.hafizi.octranspo;
  */
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 public class Schedule implements Serializable{
     private static final long serialVersionUID = 1L;
-    HashMap<String, String[]> data = new HashMap<String, String[]>();
+    HashMap<String, ArrayList<Date>> data = new HashMap<String,ArrayList<Date>>();
 
     public void addTime(String no, String time) {
-        String[] dummy = new String[200];
+        Date date = null;
+        try {
+            DateFormat formatter = new SimpleDateFormat("hh:mm:ss");
+            date = formatter.parse(time);
+        }
+        catch(Exception b){
+            System.out.println(b);
+            System.out.println("Couldnt set the format for date");
+        }
 
+        try{
+            ArrayList<Date> dummy = data.remove(no);
+            dummy.add(date);
+            data.put(no,dummy);
+        }
+        catch(Exception a){
+            ArrayList<Date> dummy = new ArrayList<Date>();
+            dummy.add(date);
+            data.put(no,dummy);
+        }
+
+        /*
         try {
             String[] temp = data.remove(no);
 
@@ -28,8 +52,12 @@ public class Schedule implements Serializable{
             dummy[0] = time;
             data.put(no, dummy);
         }
+        */
+
+
     }
 
+    /*
     public void printTime(String no){
         String[] temp = data.get(no);
         int i = 0 ;
@@ -38,8 +66,9 @@ public class Schedule implements Serializable{
             i++;
         }
     }
+    */
 
-    public String[] getTime(String no){
+    public ArrayList<Date> getTime(String no){
         return data.get(no);
     }
 }
