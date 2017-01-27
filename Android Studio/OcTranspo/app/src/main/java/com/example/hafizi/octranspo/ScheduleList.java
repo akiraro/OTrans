@@ -20,9 +20,11 @@ public class ScheduleList extends AppCompatActivity {
         load.run(this);
         HashMap<String,BusStop> busStop = load.busStop;
 
-        int position = getIntent().getExtras().getInt("busNo");
+        String position = getIntent().getExtras().getString("busNo");
         String stopID = getIntent().getExtras().getString("stopID");
-        String[] data = busStop.get(stopID).schedule.getTime(Integer.toString(position));
+        String[] data = busStop.get(stopID).schedule.getTime(position);
+        System.out.println("busNo : " + position + " stopID : " + stopID );
+        System.out.println(data[1]);
 
         final ListView listView = (ListView) findViewById(R.id.listView3);
         adapter = new ScheduleAdapter(this,data);

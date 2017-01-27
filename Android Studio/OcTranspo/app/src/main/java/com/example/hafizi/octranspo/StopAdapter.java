@@ -23,6 +23,7 @@ public class StopAdapter extends ArrayAdapter<String> {
         this.context = context;
         this.values = values;
         this.busStop = busStop;
+
     }
 
     @Override
