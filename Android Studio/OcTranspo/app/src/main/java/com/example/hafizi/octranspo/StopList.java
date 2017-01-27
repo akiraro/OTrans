@@ -31,7 +31,7 @@ public class StopList extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
-                Intent intent = new Intent (getApplicationContext(),ListSchedule.class);
+                Intent intent = new Intent (getApplicationContext(),ScheduleList.class);
                 String stopID = ((TextView)view.findViewById(R.id.texthidden)).getText().toString();
                 intent.putExtra("busNo",position);
                 intent.putExtra("stopID",stopID);

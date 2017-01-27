@@ -9,7 +9,7 @@ import android.widget.ListView;
 
 import java.util.HashMap;
 
-public class ListSchedule extends AppCompatActivity {
+public class ScheduleList extends AppCompatActivity {
     ScheduleAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -23,6 +23,10 @@ public class MainActivity extends AppCompatActivity {
         load.run(this);
         Bus[] bus = load.bus;
 
+        HashMap<String,BusStop> busStop = load.busStop;
+        BusStop temp = busStop.get("RF900");
+        System.out.println(temp.schedule.getTime("1"));
+
         ArrayList<Bus> list = new ArrayList<Bus>();
         for(Bus a : bus){
             if(a != null){

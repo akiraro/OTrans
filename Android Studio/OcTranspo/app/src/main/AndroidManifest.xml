@@ -15,7 +15,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ListSchedule" />
+        <activity android:name=".ScheduleList" />
         <activity android:name=".StopList"></activity>
     </application>
 
