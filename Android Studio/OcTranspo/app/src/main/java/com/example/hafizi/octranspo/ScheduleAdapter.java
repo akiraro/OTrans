@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -29,6 +30,9 @@ public class ScheduleAdapter extends ArrayAdapter<Date> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
+        java.util.Date date = values.get(position);
+        SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss");
+
         if(convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.schedulelayout,parent,false);
@@ -36,7 +40,7 @@ public class ScheduleAdapter extends ArrayAdapter<Date> {
 
         if (values.get(position) != null) {
             TextView time = (TextView) convertView.findViewById(R.id.text3);
-            time.setText(values.get(position).toString());
+            time.setText(formatter.format(date));
         }
 
         return convertView;

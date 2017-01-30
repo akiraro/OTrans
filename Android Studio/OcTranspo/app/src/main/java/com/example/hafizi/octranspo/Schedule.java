@@ -18,12 +18,13 @@ public class Schedule implements Serializable{
     public void addTime(String no, String time) {
         Date date = null;
         try {
-            DateFormat formatter = new SimpleDateFormat("hh:mm:ss");
+            DateFormat formatter = new SimpleDateFormat("H:mm:ss");
             date = formatter.parse(time);
+            System.out.println(date.toString());
         }
         catch(Exception b){
             System.out.println(b);
-            System.out.println("Couldnt set the format for date");
+            System.out.println("Couldn't set the format for date");
         }
 
         try{
