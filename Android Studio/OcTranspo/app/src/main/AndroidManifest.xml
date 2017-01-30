@@ -16,7 +16,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ScheduleList" />
-        <activity android:name=".StopList"></activity>
+        <activity android:name=".StopList" />
+        <activity android:name=".BusList"></activity>
     </application>
 
 </manifest>

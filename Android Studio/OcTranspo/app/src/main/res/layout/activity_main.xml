@@ -1,19 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
-    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.hafizi.octranspo.MainActivity">
+    tools:context="com.example.hafizi.octranspo.MainActivity"
+    android:layout_width="match_parent"
+    android:background="@android:color/darker_gray">
 
-    <ListView
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:id="@+id/ListView" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="235dp"
+            app:srcCompat="@drawable/main"
+            android:id="@+id/imageView3"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="0dp"
+            android:layout_weight="1" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:elevation="0dp">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp">
+
+                    <ImageButton
+                        app:srcCompat="@drawable/pressed"
+                        android:id="@+id/imageButton2"
+                        android:layout_row="1"
+                        android:layout_rowSpan="1"
+                        android:layout_rowWeight="1"
+                        android:scaleType="fitXY"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:elevation="10dp"
+                        android:onClick="OpenRoute"
+                        android:layout_width="70dp"
+                        android:layout_height="50dp" />
+
+                    <TextView
+                        android:text="Routes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView"
+                        android:layout_weight="1"
+                        android:textSize="40sp"
+                        android:onClick="OpenRoute" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <ImageButton
+                        app:srcCompat="@drawable/fav"
+                        android:id="@+id/imageButton"
+                        android:scaleType="fitXY"
+                        android:layout_row="1"
+                        android:layout_rowSpan="1"
+                        android:layout_rowWeight="0"
+                        android:layout_width="70dp"
+                        android:layout_toRightOf="@+id/imageButton2"
+                        android:layout_toEndOf="@+id/imageButton2"
+                        android:elevation="10dp"
+                        android:layout_height="50dp" />
+
+                    <TextView
+                        android:text="Favourite"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView2"
+                        android:layout_weight="1"
+                        android:textSize="40sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
 </RelativeLayout>
